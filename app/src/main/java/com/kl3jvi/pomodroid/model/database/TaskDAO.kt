@@ -1,6 +1,7 @@
 package com.kl3jvi.pomodroid.model.database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.kl3jvi.pomodroid.model.entities.Task
@@ -14,5 +15,8 @@ interface TaskDAO {
 
     @Query("SELECT * FROM TASK_TABLE ORDER BY ID")
     fun getAllTasks(): Flow<List<Task>>
+
+    @Delete
+    suspend fun deleteTask(task: Task)
 
 }

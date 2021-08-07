@@ -1,5 +1,6 @@
 package com.kl3jvi.pomodroid.view.fragments
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kl3jvi.pomodroid.R
 import com.kl3jvi.pomodroid.application.PomodoroApplication
 import com.kl3jvi.pomodroid.databinding.FragmentTaskListBinding
+import com.kl3jvi.pomodroid.model.entities.Task
 import com.kl3jvi.pomodroid.view.activities.AddUpdateToDoList
 import com.kl3jvi.pomodroid.view.adapters.TaskAdapter
 import com.kl3jvi.pomodroid.viewmodel.TaskViewModel
@@ -86,5 +88,22 @@ class TaskListFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun deleteTask(task: Task) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Delete Dish")
+        builder.setMessage("Are you sure you want to delete this dish?")
+        builder.setIcon(R.drawable.ic_baseline_warning_24)
+        builder.setPositiveButton("Yes") { dialogInterface, _ ->
+            mTaskViewModel.delete(task)
+            dialogInterface.dismiss()
+        }
+        builder.setNegativeButton("NO") { dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
     }
 }

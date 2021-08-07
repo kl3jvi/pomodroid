@@ -11,6 +11,10 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
     }
 
     val allTaskList: LiveData<List<Task>> = repository.allTasksList.asLiveData()
+
+    fun delete(task: Task) = viewModelScope.launch {
+        repository.deleteTask(task)
+    }
 }
 
 class TaskViewModelFactory(private val repository: TaskRepository) :

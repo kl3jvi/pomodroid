@@ -12,4 +12,9 @@ class TaskRepository(private val taskDao: TaskDAO) {
     }
 
     val allTasksList: Flow<List<Task>> = taskDao.getAllTasks()
+
+    @WorkerThread
+    suspend fun deleteTask(task: Task) {
+        taskDao.deleteTask(task)
+    }
 }

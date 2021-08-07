@@ -1,14 +1,18 @@
 package com.kl3jvi.pomodroid.view.adapters
 
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.kl3jvi.pomodroid.R
 import com.kl3jvi.pomodroid.databinding.ItemTaskBinding
 import com.kl3jvi.pomodroid.model.entities.Task
+import com.kl3jvi.pomodroid.utils.Constants
+import com.kl3jvi.pomodroid.view.activities.AddUpdateToDoList
 import com.kl3jvi.pomodroid.view.fragments.TaskListFragment
 
 class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
@@ -20,7 +24,7 @@ class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAda
         val time = view.tvTime
         val chipGroup = view.chipGroup
         val content = view.tvContent
-        val card = view.cardView
+        val more = view.ibMore
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -48,7 +52,24 @@ class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAda
                 }
             }
         }
-
+        holder.more.setOnClickListener {
+            val popupMenu = PopupMenu(fragment.context, holder.more)
+            popupMenu.menuInflater.inflate(R.menu.menu_adapter, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener {
+                if (it.itemId == R.id.action_edit_task) {
+                    val intent =
+                        Intent(fragment.requireActivity(), AddUpdateToDoList::class.java)
+                    intent.putExtra(Constants.EXTRA_TASK_DETAILS, task)
+                    fragment.requireActivity().startActivity(intent)
+                } else if (it.itemId == R.id.action_delete_task) {
+                    if (fragment is TaskListFragment) {
+                        fragment.deleteTask(task)
+                    }
+                }
+                true
+            }
+            popupMenu.show()
+        }
 
     }
 

@@ -12,4 +12,6 @@
     <string name="err_msg_enter_title">Please enter a title</string>
     <string name="err_msg_enter_category">Please enter a category</string>
     <string name="err_msg_enter_description">Please enter a description</string>
+    <string name="action_edit_task">Edit Task</string>
+    <string name="action_delete_task">Delete Task</string>
 </resources>
