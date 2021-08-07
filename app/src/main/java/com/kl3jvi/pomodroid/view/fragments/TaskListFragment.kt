@@ -1,16 +1,30 @@
 package com.kl3jvi.pomodroid.view.fragments
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.kl3jvi.pomodroid.R
+import com.kl3jvi.pomodroid.application.PomodoroApplication
 import com.kl3jvi.pomodroid.databinding.FragmentTaskListBinding
 import com.kl3jvi.pomodroid.view.activities.AddUpdateToDoList
+import com.kl3jvi.pomodroid.view.adapters.TaskAdapter
+import com.kl3jvi.pomodroid.viewmodel.TaskViewModel
+import com.kl3jvi.pomodroid.viewmodel.TaskViewModelFactory
+import java.util.*
 
 class TaskListFragment : Fragment() {
 
-    private var _binding: FragmentTaskListBinding? = null
+    private lateinit var mBinding: FragmentTaskListBinding
+    private lateinit var mTaskAdapter: TaskAdapter
+
+    private val mTaskViewModel: TaskViewModel by viewModels {
+        TaskViewModelFactory((requireActivity().application as PomodoroApplication).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +36,41 @@ class TaskListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTaskListBinding.inflate(inflater, container, false)
-        val root: View = _binding!!.root
+        mBinding = FragmentTaskListBinding.inflate(inflater, container, false)
+        val root: View = mBinding!!.root
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mBinding.rvTaskList.layoutManager = GridLayoutManager(requireActivity(), 1)
+
+        mTaskAdapter = TaskAdapter(this@TaskListFragment)
+        mBinding.rvTaskList.adapter = mTaskAdapter
+
+        mTaskViewModel.allTaskList.observe(viewLifecycleOwner) { tasks ->
+            tasks.let {
+                for (task in it) {
+                    if (it.isNotEmpty()) {
+
+                        mBinding.noTaskTv.visibility = View.GONE
+                        mBinding.rvTaskList.visibility = View.VISIBLE
+
+                        mTaskAdapter.tasksList(it)
+                    } else {
+                        mBinding.noTaskTv.visibility = View.VISIBLE
+                        mBinding.rvTaskList.visibility = View.GONE
+                    }
+                }
+            }
+        }
+    }
+
+    fun getRandomColor(): ColorStateList {
+
+        val color: Int = Color.argb(255, 97, 146, 255)
+        return ColorStateList.valueOf(color)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -26,7 +26,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:padding="5dp"
+                android:padding="10dp"
+                android:textColor="#141115"
                 android:text="Title"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -37,40 +38,39 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:text="20:10"
-                android:textSize="18sp" />
+                android:textColor="#4C2B36"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:paddingStart="5dp"
             android:paddingEnd="5dp">
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="2"
+                android:background="?android:attr/listDivider" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Groceries" />
+
         </com.google.android.material.chip.ChipGroup>
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_weight="2"
-            android:background="?android:attr/listDivider" />
 
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="5dp"
+            android:padding="10dp"
+            android:textColor="#0E273C"
             android:text="Content"
             android:textSize="16sp" />
 
