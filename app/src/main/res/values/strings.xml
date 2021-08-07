@@ -5,4 +5,7 @@
     <string name="title_timer">Timer</string>
     <string name="add_task">Add Task</string>
     <string name="no_tasks_added_yet">No Tasks Added Yet!</string>
+    <string name="lb_title">Title</string>
+    <string name="text_input_1">Type</string>
+    <string name="lbl_content">Add a more detailed description</string>
 </resources>
