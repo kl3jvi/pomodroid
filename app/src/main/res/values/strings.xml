@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Pomodroid</string>
+    <string name="title_task_list">Task List</string>
+    <string name="title_config">Config</string>
+    <string name="title_timer">Timer</string>
+    <string name="add_task">Add Task</string>
+    <string name="no_tasks_added_yet">No Tasks Added Yet!</string>
+</resources>
