@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -30,6 +31,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
     }
     buildFeatures {
         viewBinding true
