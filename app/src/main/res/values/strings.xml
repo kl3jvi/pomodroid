@@ -8,4 +8,5 @@
     <string name="lb_title">Title</string>
     <string name="text_input_1">Type</string>
     <string name="lbl_content">Add a more detailed description</string>
+    <string name="lbl_category">Category</string>
 </resources>
