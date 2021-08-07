@@ -1,11 +1,11 @@
 # Pomodroid - Android App
 
-<img src="/screenshots/pomodroid logo.svb" align="left"
+<img src="/screenshots/icon.svg" align="left"
 width="200" hspace="10" vspace="10">
 
 Pomodroid is a flexible and easy to use Android Pomodoro Technique Timer.  
 Unlike other services, pomodroid is free and open source.  
-wallabag for Android is inspired from [pomatez](https://github.com/roldanjr/pomatez).
+Pomodroid for Android is inspired from [pomatez](https://github.com/roldanjr/pomatez).
 
 
 ## About
@@ -25,12 +25,12 @@ The android app lets you:
 
 ## Screenshots
 
-[<img src="/screenshots/fig1.png" align="left"
+[<img src="/screenshots/fig1.jpg" align="left"
 width="200"
-    hspace="10" vspace="10">](/screenshots/fig1.png)
-[<img src="/screenshots/fig2.png" align="center"
+    hspace="10" vspace="10">](/screenshots/fig1.jpg)
+[<img src="/screenshots/fig2.jpg" align="center"
 width="200"
-    hspace="10" vspace="10">](/screenshots/fig2.png)
+    hspace="10" vspace="10">](/screenshots/fig2.jpg)
 
 ## Permissions
 
