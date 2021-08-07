@@ -2,6 +2,7 @@ package com.kl3jvi.pomodroid.view.adapters
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.kl3jvi.pomodroid.model.entities.Task
 import com.kl3jvi.pomodroid.view.fragments.TaskListFragment
 
 class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+    private val mExpandedPosition: Int = -1
     private var tasks: List<Task> = listOf()
 
     class ViewHolder(view: ItemTaskBinding) : RecyclerView.ViewHolder(view.root) {
@@ -18,7 +20,7 @@ class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAda
         val time = view.tvTime
         val chipGroup = view.chipGroup
         val content = view.tvContent
-        val divider = view.divider2
+        val card = view.cardView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,6 +48,7 @@ class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAda
                 }
             }
         }
+
 
     }
 

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="0dp"
@@ -27,8 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:padding="10dp"
-                android:textColor="#141115"
                 android:text="Title"
+                android:textColor="#141115"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -44,6 +46,16 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_more" />
+
         </LinearLayout>
 
         <com.google.android.material.chip.ChipGroup
@@ -53,6 +65,7 @@
             android:layout_weight="1"
             android:paddingStart="5dp"
             android:paddingEnd="5dp">
+
             <View
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
@@ -70,8 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:textColor="#0E273C"
             android:text="Content"
+            android:textColor="#0E273C"
             android:textSize="16sp" />
 
         <View
