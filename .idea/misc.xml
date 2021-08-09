@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_timer.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/layout/activity_add_update_to_do_list.xml" value="0.31354166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.31354166666666666" />
+        <entry key="app/src/main/res/layout/fragment_config.xml" value="0.31354166666666666" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.31354166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.31354166666666666" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.16354166666666667" />

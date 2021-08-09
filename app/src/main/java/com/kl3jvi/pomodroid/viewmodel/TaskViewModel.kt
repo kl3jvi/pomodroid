@@ -17,8 +17,8 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
     }
 }
 
-class TaskViewModelFactory(private val repository: TaskRepository) :
-    ViewModelProvider.Factory {
+
+class TaskViewModelFactory(private val repository: TaskRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TaskViewModel::class.java)) {
             return TaskViewModel(repository) as T
@@ -26,3 +26,4 @@ class TaskViewModelFactory(private val repository: TaskRepository) :
         throw IllegalArgumentException("Unknown ViewModel Class")
     }
 }
+

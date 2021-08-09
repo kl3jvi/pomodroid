@@ -14,4 +14,6 @@
     <string name="err_msg_enter_description">Please enter a description</string>
     <string name="action_edit_task">Edit Task</string>
     <string name="action_delete_task">Delete Task</string>
+    <string name="time_in_minutes">%1$s Mins</string>
+    <string name="rounds_format">%1$s Rounds</string>
 </resources>
