@@ -1,7 +1,6 @@
 package com.kl3jvi.pomodroid.view.fragments
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -13,7 +12,6 @@ import com.kl3jvi.pomodroid.R
 import com.kl3jvi.pomodroid.application.PomodoroApplication
 import com.kl3jvi.pomodroid.databinding.FragmentTaskListBinding
 import com.kl3jvi.pomodroid.model.entities.Task
-import com.kl3jvi.pomodroid.view.activities.AddUpdateToDoList
 import com.kl3jvi.pomodroid.view.adapters.TaskAdapter
 import com.kl3jvi.pomodroid.viewmodel.TaskViewModel
 import com.kl3jvi.pomodroid.viewmodel.TaskViewModelFactory
@@ -28,26 +26,20 @@ class TaskListFragment : Fragment() {
         TaskViewModelFactory((requireActivity().application as PomodoroApplication).repository)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         mBinding = FragmentTaskListBinding.inflate(inflater, container, false)
-        val root: View = mBinding!!.root
+        val root: View = mBinding.root
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mBinding.rvTaskList.layoutManager = GridLayoutManager(requireActivity(), 1)
-
+        mBinding.rvTaskList.layoutManager = GridLayoutManager(requireActivity(), 2)
         mTaskAdapter = TaskAdapter(this@TaskListFragment)
         mBinding.rvTaskList.adapter = mTaskAdapter
 
@@ -55,10 +47,8 @@ class TaskListFragment : Fragment() {
             tasks.let {
                 for (task in it) {
                     if (it.isNotEmpty()) {
-
                         mBinding.noTaskTv.visibility = View.GONE
                         mBinding.rvTaskList.visibility = View.VISIBLE
-
                         mTaskAdapter.tasksList(it)
                     } else {
                         mBinding.noTaskTv.visibility = View.VISIBLE
@@ -70,24 +60,8 @@ class TaskListFragment : Fragment() {
     }
 
     fun getRandomColor(): ColorStateList {
-
         val color: Int = Color.argb(255, 97, 146, 255)
         return ColorStateList.valueOf(color)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_add_task, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_add_task -> {
-                startActivity(Intent(requireActivity(), AddUpdateToDoList::class.java))
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     fun deleteTask(task: Task) {

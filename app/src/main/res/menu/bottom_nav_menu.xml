@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_timer"
         android:title="@string/title_timer" />
 
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+
+
 </menu>
