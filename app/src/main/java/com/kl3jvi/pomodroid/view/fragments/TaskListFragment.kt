@@ -74,10 +74,9 @@ class TaskListFragment : Fragment() {
             }
             onPositive("Remove") {
                 mTaskViewModel.delete(task)
-                Toast.makeText(requireContext(), "Task Deleted Sucessfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Task Deleted Sucessfully", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
-
-
     }
 }

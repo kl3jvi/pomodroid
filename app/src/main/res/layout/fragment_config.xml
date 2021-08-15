@@ -27,6 +27,7 @@
         android:layout_marginTop="20dp"
         android:text="Stay Focus"
         android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_dashboard" />
 
@@ -41,13 +42,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_dashboard" />
 
-    <SeekBar
+
+    <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:max="60"
-        android:minHeight="20dp"
+        app:bsb_bubble_text_color="@color/colorPrimaryDark"
+        app:bsb_max="60"
+        app:bsb_min="0"
+        app:bsb_progress="0"
+        app:bsb_section_count="5"
+        app:bsb_section_text_position="bottom_sides"
+        app:bsb_show_progress_in_float="false"
+        app:bsb_show_section_mark="false"
+        app:bsb_show_section_text="false"
+        app:bsb_show_thumb_text="false"
+        app:bsb_track_size="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -60,6 +70,7 @@
         android:layout_marginTop="20dp"
         android:text="Short Break"
         android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
@@ -74,15 +85,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
-    <SeekBar
+    <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:max="60"
+        app:bsb_bubble_text_color="@color/colorPrimaryDark"
+        app:bsb_max="60"
+        app:bsb_min="0"
+        app:bsb_progress="0"
+        app:bsb_section_count="5"
+        app:bsb_section_text_position="bottom_sides"
+        app:bsb_show_progress_in_float="false"
+        app:bsb_show_section_mark="false"
+        app:bsb_show_section_text="false"
+        app:bsb_show_thumb_text="false"
+        app:bsb_track_size="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
 
     <TextView
         android:id="@+id/textView7"
@@ -92,6 +113,7 @@
         android:layout_marginTop="20dp"
         android:text="Long Break"
         android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
 
@@ -106,15 +128,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
 
-    <SeekBar
+    <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar3"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:max="60"
+        app:bsb_bubble_text_color="@color/colorPrimaryDark"
+        app:bsb_max="60"
+        app:bsb_min="0"
+        app:bsb_progress="0"
+        app:bsb_section_count="5"
+        app:bsb_section_text_position="bottom_sides"
+        app:bsb_show_progress_in_float="false"
+        app:bsb_show_section_mark="false"
+        app:bsb_show_section_text="false"
+        app:bsb_show_thumb_text="false"
+        app:bsb_track_size="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
 
     <TextView
         android:id="@+id/textView9"
@@ -124,6 +156,7 @@
         android:layout_marginTop="20dp"
         android:text="Session Rounds"
         android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
 
@@ -138,14 +171,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
 
-    <SeekBar
+    <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar4"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:max="8"
+        app:bsb_bubble_text_color="@color/colorPrimaryDark"
+        app:bsb_max="8"
+        app:bsb_min="0"
+        app:bsb_progress="0"
+        app:bsb_section_count="5"
+        app:bsb_section_text_position="bottom_sides"
+        app:bsb_show_progress_in_float="false"
+        app:bsb_show_section_mark="false"
+        app:bsb_show_section_text="false"
+        app:bsb_show_thumb_text="false"
+        app:bsb_track_size="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

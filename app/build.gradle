@@ -63,7 +63,7 @@ dependencies {
     // Seekbar Lib
     implementation 'com.xw.repo:bubbleseekbar:3.20'
 
-    //Bottom Sheet
+    //Bottom Sheet Lib
     implementation 'com.maxkeppeler.sheets:core:2.2.5'
     implementation 'com.maxkeppeler.sheets:options:2.2.5'
     implementation 'com.maxkeppeler.sheets:info:2.2.5'
