@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
@@ -14,6 +13,9 @@ import com.kl3jvi.pomodroid.model.entities.Task
 import com.kl3jvi.pomodroid.utils.Constants
 import com.kl3jvi.pomodroid.view.activities.AddUpdateToDoList
 import com.kl3jvi.pomodroid.view.fragments.TaskListFragment
+import com.maxkeppeler.sheets.info.InfoSheet
+import com.maxkeppeler.sheets.options.Option
+import com.maxkeppeler.sheets.options.OptionsSheet
 
 class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     private val mExpandedPosition: Int = -1
@@ -41,6 +43,7 @@ class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAda
         holder.time.text = task.timeStamp
         holder.content.text = task.content
         val arrayWithCategories = task.category.split(" ")
+        holder.chipGroup.removeAllViews() // Removes duplicates :) I'm so smart
         arrayWithCategories.forEach {
             if (it.isNotEmpty()) {
                 if (fragment is TaskListFragment) {
@@ -52,23 +55,38 @@ class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAda
                 }
             }
         }
+
         holder.more.setOnClickListener {
-            val popupMenu = PopupMenu(fragment.context, holder.more)
-            popupMenu.menuInflater.inflate(R.menu.menu_adapter, popupMenu.menu)
-            popupMenu.setOnMenuItemClickListener {
-                if (it.itemId == R.id.action_edit_task) {
-                    val intent =
-                        Intent(fragment.requireActivity(), AddUpdateToDoList::class.java)
-                    intent.putExtra(Constants.EXTRA_TASK_DETAILS, task)
-                    fragment.requireActivity().startActivity(intent)
-                } else if (it.itemId == R.id.action_delete_task) {
-                    if (fragment is TaskListFragment) {
-                        fragment.deleteTask(task)
+
+            OptionsSheet().show(fragment.requireContext()) {
+                title("Options")
+                with(
+                    Option(R.drawable.ic_edit, "Edit Task"),
+                    Option(R.drawable.ic_delete, "Delete Task"),
+                )
+                onPositive { index: Int, _: Option ->
+                    // Handle selected option
+                    when (index) {
+                        0 -> {
+                            val intent =
+                                Intent(fragment.requireActivity(), AddUpdateToDoList::class.java)
+                            intent.putExtra(Constants.EXTRA_TASK_DETAILS, task)
+                            fragment.requireActivity().startActivity(intent)
+
+                        }
+                        1 -> {
+                            if (fragment is TaskListFragment) {
+                                fragment.deleteTask(task)
+                            }
+                        }
                     }
                 }
-                true
             }
-            popupMenu.show()
+
+
+
+
+
         }
 
     }
