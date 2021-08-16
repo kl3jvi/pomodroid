@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_dashboard" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/time1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -44,7 +44,7 @@
 
 
     <com.xw.repo.BubbleSeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/seekBar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:bsb_bubble_text_color="@color/colorPrimaryDark"
@@ -72,10 +72,10 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar1" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/time2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -83,7 +83,7 @@
         android:text="@string/time_in_minutes"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar1" />
 
     <com.xw.repo.BubbleSeekBar
         android:id="@+id/seekBar2"
@@ -118,7 +118,7 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/time3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -161,7 +161,7 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBar3" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/time4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
