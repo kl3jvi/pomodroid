@@ -26,16 +26,16 @@ The android app lets you:
 ## Screenshots
 
 [<img src="/screenshots/fig1.jpg" align="left"
-width="24%"
+width="22%"
     hspace="10" vspace="10">](/screenshots/fig1.jpg)
 [<img src="/screenshots/fig2.jpg" align="center"
-width="24%"
+width="22%"
     hspace="10" vspace="10">](/screenshots/fig3.jpg)
     [<img src="/screenshots/fig3.jpg" align="center"
-width="24%"
+width="22%"
     hspace="10" vspace="10">](/screenshots/fig4.jpg)
     [<img src="/screenshots/fig4.jpg" align="center"
-width="24%"
+width="22%"
     hspace="10" vspace="10">](/screenshots/fig4.jpg)
 
 ## Permissions
