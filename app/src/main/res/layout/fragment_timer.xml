@@ -15,12 +15,12 @@
         android:layout_marginEnd="20dp"
         app:cpb_background_progressbar_color="#b6bbd8"
         app:cpb_background_progressbar_width="5dp"
-        app:cpb_progress="55"
+
         app:cpb_progress_direction="to_left"
         app:cpb_progress_max="60"
         app:cpb_progressbar_color="@color/colorPrimary"
         app:cpb_progressbar_width="10dp"
-        app:cpb_round_border="false"
+        app:cpb_round_border="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,8 +63,10 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+
+        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
         app:cardBackgroundColor="#E0E0E0"
         app:cardCornerRadius="5dp"
         app:cardElevation="6dp"
