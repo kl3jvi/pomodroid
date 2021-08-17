@@ -15,15 +15,13 @@ import com.xw.repo.BubbleSeekBar.OnProgressChangedListener
 
 
 class ConfigFragment : Fragment(), OnProgressChangedListener {
-
     private var mBinding: FragmentConfigBinding? = null
-    val numbers = IntArray(4)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         mBinding = FragmentConfigBinding.inflate(inflater, container, false)
         val root: View = mBinding!!.root
 
@@ -37,18 +35,7 @@ class ConfigFragment : Fragment(), OnProgressChangedListener {
         mBinding!!.seekBar3.onProgressChangedListener = this
         mBinding!!.seekBar4.onProgressChangedListener = this
 
-        mBinding!!.time1.text =
-            resources.getString(R.string.time_in_minutes, loadValue("focus").toString())
-        mBinding!!.seekBar1.setProgress(loadValue("focus").toFloat())
-        mBinding!!.time2.text =
-            resources.getString(R.string.time_in_minutes, loadValue("break").toString())
-        mBinding!!.seekBar2.setProgress(loadValue("break").toFloat())
-        mBinding!!.time3.text =
-            resources.getString(R.string.time_in_minutes, loadValue("lBreak").toString())
-        mBinding!!.seekBar3.setProgress(loadValue("lBreak").toFloat())
-        mBinding!!.time4.text =
-            resources.getString(R.string.time_in_minutes, loadValue("rounds").toString())
-        mBinding!!.seekBar4.setProgress(loadValue("rounds").toFloat())
+        setupConfig()
     }
 
     override fun onDestroyView() {
@@ -106,6 +93,20 @@ class ConfigFragment : Fragment(), OnProgressChangedListener {
 
     }
 
+    private fun setupConfig() {
+        mBinding!!.time1.text =
+            resources.getString(R.string.time_in_minutes, loadValue("focus").toString())
+        mBinding!!.seekBar1.setProgress(loadValue("focus").toFloat())
+        mBinding!!.time2.text =
+            resources.getString(R.string.time_in_minutes, loadValue("break").toString())
+        mBinding!!.seekBar2.setProgress(loadValue("break").toFloat())
+        mBinding!!.time3.text =
+            resources.getString(R.string.time_in_minutes, loadValue("lBreak").toString())
+        mBinding!!.seekBar3.setProgress(loadValue("lBreak").toFloat())
+        mBinding!!.time4.text =
+            resources.getString(R.string.time_in_minutes, loadValue("rounds").toString())
+        mBinding!!.seekBar4.setProgress(loadValue("rounds").toFloat())
+    }
 
     private fun saveValue(key: String?, value: Int) {
         val sharedPreferences =
