@@ -13,12 +13,10 @@ import com.kl3jvi.pomodroid.model.entities.Task
 import com.kl3jvi.pomodroid.utils.Constants
 import com.kl3jvi.pomodroid.view.activities.AddUpdateToDoList
 import com.kl3jvi.pomodroid.view.fragments.TaskListFragment
-import com.maxkeppeler.sheets.info.InfoSheet
 import com.maxkeppeler.sheets.options.Option
 import com.maxkeppeler.sheets.options.OptionsSheet
 
 class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
-    private val mExpandedPosition: Int = -1
     private var tasks: List<Task> = listOf()
 
     class ViewHolder(view: ItemTaskBinding) : RecyclerView.ViewHolder(view.root) {
@@ -57,7 +55,6 @@ class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAda
         }
 
         holder.more.setOnClickListener {
-
             OptionsSheet().show(fragment.requireContext()) {
                 title("Options")
                 with(
@@ -82,9 +79,6 @@ class TaskAdapter(private val fragment: Fragment) : RecyclerView.Adapter<TaskAda
                     }
                 }
             }
-
-
-
 
 
         }

@@ -80,18 +80,14 @@ class ConfigFragment : Fragment(), OnProgressChangedListener {
         bubbleSeekBar: BubbleSeekBar?,
         progress: Int,
         progressFloat: Float
-    ) {
-
-    }
+    ) {}
 
     override fun getProgressOnFinally(
         bubbleSeekBar: BubbleSeekBar?,
         progress: Int,
         progressFloat: Float,
         fromUser: Boolean
-    ) {
-
-    }
+    ) {}
 
     private fun setupConfig() {
         mBinding!!.time1.text =

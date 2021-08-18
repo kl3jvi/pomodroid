@@ -2,6 +2,7 @@ package com.kl3jvi.pomodroid.view.fragments
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ import me.zhanghai.android.materialplaypausedrawable.MaterialPlayPauseDrawable
 class TimerFragment : Fragment() {
 
     private var mBinding: FragmentTimerBinding? = null
-
+    private var lastPause: Long = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,8 +30,8 @@ class TimerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val chronometer = mBinding!!.time
-        chronometer.base = SystemClock.elapsedRealtime() + transformTime("focus")
-        chronometer.isCountDown = true
+        chronometer.base = 6000L
+        println("${transformTime("focus")}--------------------")
 
 
 
@@ -62,18 +63,25 @@ class TimerFragment : Fragment() {
 
         when (newState) {
             MaterialPlayPauseDrawable.State.Play -> {
+                lastPause = SystemClock.elapsedRealtime();
                 mBinding!!.time.stop()
             }
             MaterialPlayPauseDrawable.State.Pause -> {
+                mBinding!!.time.base =
+                    mBinding!!.time.base + SystemClock.elapsedRealtime() - lastPause;
+
                 mBinding!!.time.start()
                 val max = transformTime("focus") / 1000F
                 mBinding!!.time.setOnChronometerTickListener {
+
                     val elapsedMillis: Long = SystemClock.elapsedRealtime() - it.base
+
                     mBinding!!.circularProgressBar.progressMax = max
                     mBinding!!.circularProgressBar.setProgressWithAnimation(
                         ((max - elapsedMillis) / 1000),
                         1000
                     )
+                    Log.e("Time",(max - elapsedMillis).toString())
                 }
             }
         }
