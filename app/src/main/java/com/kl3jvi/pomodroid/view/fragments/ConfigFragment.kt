@@ -50,7 +50,7 @@ class ConfigFragment : Fragment(), OnProgressChangedListener {
         fromUser: Boolean
     ) {
         Log.e(R.id.seekBar1.toString(), bubbleSeekBar!!.id.toString())
-        when (bubbleSeekBar!!.id) {
+        when (bubbleSeekBar.id) {
             R.id.seekBar1 -> {
                 mBinding!!.time1.text =
                     resources.getString(R.string.time_in_minutes, progress.toString())
@@ -80,14 +80,16 @@ class ConfigFragment : Fragment(), OnProgressChangedListener {
         bubbleSeekBar: BubbleSeekBar?,
         progress: Int,
         progressFloat: Float
-    ) {}
+    ) {
+    }
 
     override fun getProgressOnFinally(
         bubbleSeekBar: BubbleSeekBar?,
         progress: Int,
         progressFloat: Float,
         fromUser: Boolean
-    ) {}
+    ) {
+    }
 
     private fun setupConfig() {
         mBinding!!.time1.text =

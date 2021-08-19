@@ -15,7 +15,7 @@ import me.zhanghai.android.materialplaypausedrawable.MaterialPlayPauseDrawable
 class TimerFragment : Fragment() {
 
     private var mBinding: FragmentTimerBinding? = null
-    private var lastPause: Long = 0
+    private var timeWhenStopped: Long = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,11 +30,7 @@ class TimerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val chronometer = mBinding!!.time
-        chronometer.base = 6000L
-        println("${transformTime("focus")}--------------------")
-
-
-
+        chronometer.base = getTime("focus")
         mBinding!!.playPause.setOnClickListener {
             startStop()
         }
@@ -45,14 +41,13 @@ class TimerFragment : Fragment() {
         mBinding = null
     }
 
-    private fun transformTime(key: String): Int {
+    private fun getTime(key: String): Long {
         val sharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(requireContext())
-        return sharedPreferences.getInt(key, 0) * 60000
+        return (sharedPreferences.getInt(key, 0) * 60_000).toLong()
     }
 
     private fun startStop() {
-
 
         val newState =
             if (mBinding!!.playPause.state === MaterialPlayPauseDrawable.State.Play)
@@ -63,15 +58,15 @@ class TimerFragment : Fragment() {
 
         when (newState) {
             MaterialPlayPauseDrawable.State.Play -> {
-                lastPause = SystemClock.elapsedRealtime();
+                timeWhenStopped = SystemClock.elapsedRealtime();
                 mBinding!!.time.stop()
             }
             MaterialPlayPauseDrawable.State.Pause -> {
                 mBinding!!.time.base =
-                    mBinding!!.time.base + SystemClock.elapsedRealtime() - lastPause;
+                    mBinding!!.time.base + SystemClock.elapsedRealtime() - timeWhenStopped;
 
                 mBinding!!.time.start()
-                val max = transformTime("focus") / 1000F
+                val max = getTime("focus") / 1000F
                 mBinding!!.time.setOnChronometerTickListener {
 
                     val elapsedMillis: Long = SystemClock.elapsedRealtime() - it.base
@@ -81,9 +76,16 @@ class TimerFragment : Fragment() {
                         ((max - elapsedMillis) / 1000),
                         1000
                     )
-                    Log.e("Time",(max - elapsedMillis).toString())
+                    Log.e("Time", (max - elapsedMillis).toString())
                 }
             }
         }
     }
+
+
+    companion object {
+        const val ANIMATION_DURATION: Long = 1000
+    }
 }
+
+
