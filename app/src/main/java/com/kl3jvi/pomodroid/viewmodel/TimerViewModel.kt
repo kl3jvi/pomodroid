@@ -1,39 +1,49 @@
 package com.kl3jvi.pomodroid.viewmodel
 
-import android.os.SystemClock
-import android.util.Log
-import android.view.View
-import android.widget.Chronometer
+import android.os.CountDownTimer
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import me.zhanghai.android.materialplaypausedrawable.MaterialPlayPauseDrawable
 
-class TimerViewModel(chronometer: Chronometer) : ViewModel() {
-    private var timeWhenStopped: Long = 0
-    private val chronometerInstance by lazy { chronometer }
+class TimerViewModel() : ViewModel() {
+    var COUNTDOWN_LIMIT = 30_000L
+    val ONE_SECOND = 1000L
+    lateinit var timer: CountDownTimer
+    var timerFinished = MutableLiveData<Boolean>()
+    val currentTime = MutableLiveData<Long>()
 
-    fun play() {
-        timeWhenStopped = SystemClock.elapsedRealtime();
-        chronometerInstance.stop()
+    init {
+        timerFinished.value = false
     }
 
-    fun pause() {
-        chronometerInstance.base =
-            chronometerInstance.base + SystemClock.elapsedRealtime() - timeWhenStopped
-        chronometerInstance.start()
+    fun timerInit(countDownTimer: Long) {
+        timer = object : CountDownTimer(countDownTimer, ONE_SECOND) {
+            override fun onTick(timeLeft: Long) {
+                currentTime.value = timeLeft / ONE_SECOND
+                COUNTDOWN_LIMIT = timeLeft
+            }
+
+            override fun onFinish() {
+                timerFinished.value = true
+            }
+        }
     }
 
-    fun reset() {
-
+    fun start() {
+        timerInit(COUNTDOWN_LIMIT)
+        timer.start()
     }
 
-
+    fun stop() {
+        timer.cancel()
+    }
 }
 
-class TimerViewModelFactory(private val chrono: Chronometer) : ViewModelProvider.Factory {
+class TimerViewModelFactory() : ViewModelProvider.Factory {
+
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TimerViewModel::class.java)) {
-            return TimerViewModel(chrono) as T
+            return TimerViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

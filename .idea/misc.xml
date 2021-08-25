@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.475" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21574074074074073" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/drawable/ic_config.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.18385416666666668" />

@@ -7,4 +7,5 @@ import com.kl3jvi.pomodroid.model.database.TaskRepository
 class PomodoroApplication : Application() {
     private val database by lazy { TaskDatabase.getDatabase(this@PomodoroApplication) }
     val repository by lazy { TaskRepository(database.taskDao()) }
+
 }

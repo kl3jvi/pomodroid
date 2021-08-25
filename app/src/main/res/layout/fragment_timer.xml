@@ -103,7 +103,8 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:padding="10dp"
-                    android:src="@drawable/ic_more" />
+                    android:src="@drawable/ic_more"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
             <TextView
