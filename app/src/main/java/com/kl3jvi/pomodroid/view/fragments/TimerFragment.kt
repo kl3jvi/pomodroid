@@ -15,7 +15,6 @@ import com.kl3jvi.pomodroid.databinding.FragmentTimerBinding
 import com.kl3jvi.pomodroid.viewmodel.TimerViewModel
 import com.kl3jvi.pomodroid.viewmodel.TimerViewModelFactory
 import me.zhanghai.android.materialplaypausedrawable.MaterialPlayPauseDrawable
-import java.util.concurrent.TimeUnit.*
 
 
 class TimerFragment : Fragment() {
@@ -63,8 +62,15 @@ class TimerFragment : Fragment() {
 
         mTimerViewModel.currentTime.observe(viewLifecycleOwner) { time ->
             Log.e("Time", time.toString())
+            chronometer.base = SystemClock.elapsedRealtime() + time
+            mTimerViewModel.timerFinished.observe(viewLifecycleOwner) { paused ->
+                if (paused) {
+                    chronometer.start()
+                } else {
+                    chronometer.stop()
+                }
+            }
 
-            println(converter(time))
         }
     }
 
@@ -80,17 +86,6 @@ class TimerFragment : Fragment() {
         return (sharedPreferences.getInt(key, 0) * 60_000).toLong()
     }
 
-    fun converter(millis: Long): String =
-        String.format(
-            "%02d : %02d : %02d",
-            MILLISECONDS.toHours(millis),
-            MILLISECONDS.toMinutes(millis) - HOURS.toMinutes(
-                MILLISECONDS.toHours(millis)
-            ),
-            MILLISECONDS.toSeconds(millis) - MINUTES.toSeconds(
-                MILLISECONDS.toMinutes(millis)
-            )
-        )
 
     companion object {
         const val ANIMATION_DURATION: Long = 1000

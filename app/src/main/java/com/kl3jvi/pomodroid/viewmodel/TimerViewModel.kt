@@ -16,10 +16,10 @@ class TimerViewModel() : ViewModel() {
         timerFinished.value = false
     }
 
-    fun timerInit(countDownTimer: Long) {
+    private fun timerInit(countDownTimer: Long) {
         timer = object : CountDownTimer(countDownTimer, ONE_SECOND) {
             override fun onTick(timeLeft: Long) {
-                currentTime.value = timeLeft / ONE_SECOND
+                currentTime.value = timeLeft
                 COUNTDOWN_LIMIT = timeLeft
             }
 
