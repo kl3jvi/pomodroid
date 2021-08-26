@@ -12,15 +12,13 @@ class TimerViewModel() : ViewModel() {
     var timerFinished = MutableLiveData<Boolean>()
     val currentTime = MutableLiveData<Long>()
 
-    init {
-        timerFinished.value = false
-    }
-
     private fun timerInit(countDownTimer: Long) {
+        timerFinished.value = false
         timer = object : CountDownTimer(countDownTimer, ONE_SECOND) {
             override fun onTick(timeLeft: Long) {
                 currentTime.value = timeLeft
                 COUNTDOWN_LIMIT = timeLeft
+
             }
 
             override fun onFinish() {
@@ -37,15 +35,6 @@ class TimerViewModel() : ViewModel() {
     fun stop() {
         timer.cancel()
     }
-}
 
-class TimerViewModelFactory() : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(TimerViewModel::class.java)) {
-            return TimerViewModel() as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel Class")
-    }
 
 }

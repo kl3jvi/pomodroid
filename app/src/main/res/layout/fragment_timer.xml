@@ -25,13 +25,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Chronometer
+    <!--    <Chronometer-->
+    <!--        android:id="@+id/time"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:countDown="true"-->
+    <!--        android:textColor="@color/colorPrimary"-->
+    <!--        android:textSize="60sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"-->
+    <!--        app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/circularProgressBar"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/circularProgressBar" />-->
+
+    <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:countDown="true"
         android:textColor="@color/colorPrimary"
         android:textSize="60sp"
+        android:text="00:00"
         app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
         app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
         app:layout_constraintStart_toStartOf="@+id/circularProgressBar"
