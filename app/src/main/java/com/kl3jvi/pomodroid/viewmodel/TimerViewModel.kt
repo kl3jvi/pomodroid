@@ -1,16 +1,18 @@
 package com.kl3jvi.pomodroid.viewmodel
 
+import android.app.Application
 import android.os.CountDownTimer
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 
-class TimerViewModel() : ViewModel() {
-    var COUNTDOWN_LIMIT = 30_000L
+class TimerViewModel(application: Application) : AndroidViewModel(application) {
+    var COUNTDOWN_LIMIT = getTime("focus")
     val ONE_SECOND = 1000L
     lateinit var timer: CountDownTimer
     var timerFinished = MutableLiveData<Boolean>()
     val currentTime = MutableLiveData<Long>()
+
 
     private fun timerInit(countDownTimer: Long) {
         timerFinished.value = false
@@ -18,7 +20,6 @@ class TimerViewModel() : ViewModel() {
             override fun onTick(timeLeft: Long) {
                 currentTime.value = timeLeft
                 COUNTDOWN_LIMIT = timeLeft
-
             }
 
             override fun onFinish() {
@@ -36,5 +37,9 @@ class TimerViewModel() : ViewModel() {
         timer.cancel()
     }
 
-
+    private fun getTime(key: String): Long {
+        val sharedPreferences =
+            PreferenceManager.getDefaultSharedPreferences(getApplication())
+        return (sharedPreferences.getInt(key, 0) * 60_000).toLong()
+    }
 }

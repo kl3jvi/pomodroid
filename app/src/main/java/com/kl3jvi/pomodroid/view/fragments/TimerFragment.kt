@@ -57,12 +57,11 @@ class TimerFragment : Fragment() {
                 }
             }
         }
-        mBinding!!.circularProgressBar.progressMax = 30000F
 
+        mBinding!!.circularProgressBar.progressMax = getTime("focus").toFloat()
         mTimerViewModel.currentTime.observe(viewLifecycleOwner) { time ->
-            Log.e("Time", time.toString())
             mBinding!!.time.text = String.format(
-                "%d:%d",
+                "%02d:%02d",
                 java.util.concurrent.TimeUnit.MILLISECONDS.toMinutes(time),
                 java.util.concurrent.TimeUnit.MILLISECONDS.toSeconds(time) -
                         java.util.concurrent.TimeUnit.MINUTES.toSeconds(
@@ -87,10 +86,9 @@ class TimerFragment : Fragment() {
 
     private fun getTime(key: String): Long {
         val sharedPreferences =
-            PreferenceManager.getDefaultSharedPreferences(requireContext())
+            PreferenceManager.getDefaultSharedPreferences(requireActivity())
         return (sharedPreferences.getInt(key, 0) * 60_000).toLong()
     }
-
 
     companion object {
         const val ANIMATION_DURATION: Long = 1000
