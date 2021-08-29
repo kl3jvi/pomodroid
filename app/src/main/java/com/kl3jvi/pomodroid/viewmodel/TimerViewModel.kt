@@ -7,16 +7,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 
 class TimerViewModel(application: Application) : AndroidViewModel(application) {
-    var COUNTDOWN_LIMIT = getTime("focus")
+    var COUNTDOWN_LIMIT = 0L
     val ONE_SECOND = 1000L
     lateinit var timer: CountDownTimer
     var timerFinished = MutableLiveData<Boolean>()
     val currentTime = MutableLiveData<Long>()
 
 
+    private fun setupTime(key: String): Long {
+        COUNTDOWN_LIMIT = getTime(key)
+        return COUNTDOWN_LIMIT
+    }
+
     private fun timerInit(countDownTimer: Long) {
         timerFinished.value = false
-        timer = object : CountDownTimer(countDownTimer, ONE_SECOND) {
+        timer = object : CountDownTimer(setupTime("focus"), ONE_SECOND) {
             override fun onTick(timeLeft: Long) {
                 currentTime.value = timeLeft
                 COUNTDOWN_LIMIT = timeLeft
